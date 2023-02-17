@@ -48,10 +48,11 @@ body{
 }
 .InputBox{
     width: 100%;
-    height: 25%;
-    /* border: solid red */
+    height: 26%;
+    /* border: solid red; */
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-content: center;
     align-items: center;
     gap: 20px;
@@ -65,6 +66,9 @@ body{
     border-radius: 5px;
     /* border: solid blue; */
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .InputPassword{
     width: 350px;
@@ -74,6 +78,7 @@ body{
     /* border: solid green; */
     font-size: 16px;
     padding-left: 10px;
+    margin-top: 30px;
 }
 .forgot{
     width: 90%;
@@ -83,6 +88,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-self: center;
+    margin-top: 15px;
 
 }
 .forgotemail{
