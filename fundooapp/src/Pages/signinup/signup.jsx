@@ -48,6 +48,7 @@ function Signup(){
         confirmpasshelper:''
 
     })
+    
 
     const showDetails =() =>{
         console.log(enterDetail)
@@ -162,7 +163,8 @@ function Signup(){
                 </div>
                 <div className="use8"><p>Use 8 or more characters with a mix of letters, numbers & symbols</p></div>
                 <div className="showpass">
-                    <input type="checkbox" name="checkbox" className="box" id="check"/><label for="check">show password</label>
+                    <input type="checkbox" name="checkbox" 
+                    className="box" id="check"/><label for="check">show password</label>
                 </div>
                 <div className="signinInstead">
                     <button className="instead" >Sign in instead</button>
