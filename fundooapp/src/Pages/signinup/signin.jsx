@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './signin.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { SignInApi } from '../../services/userservice';
 
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
@@ -44,22 +43,17 @@ function SignIn() {
         else if(passTest===true){
             setuserRegix(preState =>({...preState,passMsg:false,passHelper:''}))
         }
-        if(emailTest===true && passTest ===true)
-        {
-            SignInApi(userDetails)
-        }
     }
     return (
         <>
             <form className="FormBody">
-                <div className="logo">
-                    {/* <img width={90} height={30} src="https://www.pngall.com/wp-content/uploads/5/Google-Logo-PNG-File.png" alt="" /> */}
-                    <div className="F">F</div>
-                    <div className="U">u</div>
-                    <div className="N">n</div>
-                    <div className="D">d</div>
-                    <div className="O">o</div>
-                    <div className="O2">o</div>
+                <div className="fundologo">
+                <div className="f">F</div>
+                    <div className="u">u</div>
+                    <div className="n">n</div>
+                    <div className="d">d</div>
+                    <div className="o">o</div>
+                    <div className="o2">o</div>
                 </div>
                 <div className="signin">Sign in</div>
                 <div className="user">

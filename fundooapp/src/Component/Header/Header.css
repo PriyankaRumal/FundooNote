@@ -5,4 +5,47 @@ body {
     width: 100vw;
     height: 10vh;
     border: 1px red solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menu{
+    width: 15%;
+    height: 70%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.logo{
+    width: 20%;
+    height: 100%;
+    font-size: 20px;
+}
+.head1{
+    color: #5f6368;
+    font-family: "Product Sans",Arial,sans-serif;
+    font-size: 22px;
+    opacity: 2;
+    font-weight: 500;
+    margin-left:5px;
+}
+.Searchbar{
+    width: 52%;
+    height: 70%;
+    border: 1px #E0E0E0 solid;
+    display: flex;
+    align-items: center;
+    background-color: #F0F0F0; 
+    border-radius:8px ;
+     box-shadow: 2px 2px 2px #e0e0e0; 
+}
+.icons2{
+    width: 25%;
+    height: 90%;
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
 }
