@@ -6,16 +6,16 @@ import Header from './Component/Header/Header';
 import Note1 from './Component/Note1/Note1';
 import Note2 from './Component/Note2/Note2';
 import Note3 from './Component/Note3/Note3';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Router1 from './Router/Router';
 
 function App() {
   return (
     <div className="App">
-      <SignIn />
+      {/* <SignIn /> */}
       {/* <Signup /> */}
-      {/* <Header /> */}
-      {/* <Note1 /> */}
-      {/* <Note2 /> */}
-      {/* <Note3 /> */}
+      {/* <Dashboard /> */}
+      <Router1/>
     </div>
   );
 }
