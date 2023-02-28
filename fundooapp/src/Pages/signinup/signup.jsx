@@ -2,36 +2,37 @@ import React, { useState } from 'react';
 import './signup.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { SignUpApi } from '../../services/userservice';
 
 const nameRegex = /^([A-Z]{1}[a-z,A-Z]{2,})$/;
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 function Signup(){
 
-    const [enterDetail, setenterDetail] = useState({
+    const [enterDetail, setEnterDetail] = useState({
         firstname:'',
         lastname:'',
-        username:'',
+        email:'',
         password:'',
         confirmpass:''
-    })
+    });
     const takename=(event)=>{
         console.log(event.target.value)
-        setenterDetail( preState => ({...preState,firstname:event.target.value}))
+        setEnterDetail( preState => ({...preState,firstname:event.target.value}))
     }
     const takelastname=(event)=>{
-        setenterDetail(preState =>({...preState,lastname:event.target.value}))
+        setEnterDetail(preState =>({...preState,lastname:event.target.value}))
     }
     const takeusername=(event)=>{
-        setenterDetail(preState =>({...preState,username:event.target.value}))
+        setEnterDetail(preState =>({...preState,email:event.target.value}))
     }
     const takepassword=(event)=>{
-        setenterDetail(preState =>({...preState,password:event.target.value}))
+        setEnterDetail(preState =>({...preState,password:event.target.value}))
     }
     const takeconfirm=(event)=>{
-        setenterDetail(preState =>({...preState,confirmpass:event.target.value}))
+        setEnterDetail(preState =>({...preState,confirmpass:event.target.value}))
     }
-    const [forRegix,setforRegix] = useState({
+    const [forRegix,setForRegix] = useState({
         fnamerror:false,
         fnamehelper:'',
 
@@ -47,56 +48,65 @@ function Signup(){
         confirpasserror:false,
         confirmpasshelper:''
 
-    })
+    });
     
 
     const showDetails =() =>{
-        console.log(enterDetail)
-        let fnametest=nameRegex.test(enterDetail.firstname)
-        let lnametest=nameRegex.test(enterDetail.lastname)
-        let usernametest=emailRegex.test(enterDetail.username)
-        let passwordtest=passwordRegex.test(enterDetail.password)
-        let confirmtest=passwordRegex.test(enterDetail.confirmpass)
-        console.log(fnametest)
-        console.log(lnametest)
-        console.log(usernametest)
-        console.log(passwordtest)
-        console.log(confirmtest)
-        if(fnametest===false){
-            setforRegix(preState =>({...preState,fnamerror:true,fnamehelper:'enter a correct name'}))
+        // console.log(enterDetail)
+        // let fnametest=nameRegex.test(enterDetail.firstname)
+        // let lnametest=nameRegex.test(enterDetail.lastname)
+        // let usernametest=emailRegex.test(enterDetail.username)
+        // let passwordtest=passwordRegex.test(enterDetail.password)
+        // let confirmtest=passwordRegex.test(enterDetail.confirmpass)
+        // console.log(fnametest)
+        // console.log(lnametest)
+        // console.log(usernametest)
+        // console.log(passwordtest)
+        // console.log(confirmtest)
+        if(nameRegex.test(enterDetail.firstname)===false){
+            setForRegix(preState =>({...preState,fnamerror:true,fnamehelper:'enter a correct name'}))
         }
-        else if(fnametest===true){
-            setforRegix(preState =>({...preState,fnamerror:false,fnamehelper:''}))
+        else if(nameRegex.test(enterDetail.firstname)===true){
+            setForRegix(preState =>({...preState,fnamerror:false,fnamehelper:''}))
         }
-        if(lnametest===false){
-            setforRegix(preState =>({...preState,lnamerror:true,lnamehelper:'enter a correct name'}))
+        if(nameRegex.test(enterDetail.lastname)===false){
+            setForRegix(preState =>({...preState,lnamerror:true,lnamehelper:'enter a correct name'}))
         }
-        else if(lnametest===true){
-            setforRegix(preState =>({...preState,lnamehelper:false,lnamehelper:''}))
+        else if(nameRegex.test(enterDetail.lastname)===true){
+            setForRegix(preState =>({...preState,lnamehelper:false,lnamehelper:''}))
         }
-        if(usernametest===false){
-            setforRegix(preState =>({...preState,usernamerror:true,usernamehelper:'enter a correct email'}))
+        if(emailRegex.test(enterDetail.email)===false){
+            setForRegix(preState =>({...preState,usernamerror:true,usernamehelper:'enter a correct email'}))
         }
-        else if(usernametest===true){
-            setforRegix(preState =>({...preState,usernamerror:false,usernamehelper:''}))
+        else if(emailRegex.test(enterDetail.email)===true){
+            setForRegix(preState =>({...preState,usernamerror:false,usernamehelper:''}))
         }
-        if(passwordtest===false){
-            setforRegix(preState =>({...preState,passworderror:true,passwordhelper:'enter a correct password'}))
+        if(passwordRegex.test(enterDetail.password)===false){
+            setForRegix(preState =>({...preState,passworderror:true,passwordhelper:'enter a correct password'}))
         }
-        else if(passwordtest===true){
-            setforRegix(preState =>({...preState,passworderror:false,passwordhelper:''}))
+        else if(passwordRegex.test(enterDetail.password)===true){
+            setForRegix(preState =>({...preState,passworderror:false,passwordhelper:''}))
         }
-        if(confirmtest===false){
-            setforRegix(preState =>({...preState,confirpasserror:true,confirmpasshelper:'enter a correct password'}))
+        if(passwordRegex.test(enterDetail.confirmpass)===false){
+            setForRegix(preState =>({...preState,confirpasserror:true,confirmpasshelper:'enter a correct password'}))
         }
-        else if(confirmtest===true){
-            setforRegix(preState =>({...preState,confirpasserror:false,confirmpasshelper:''}))
+        else if(passwordRegex.test(enterDetail.confirmpass)===true){
+            setForRegix(preState =>({...preState,confirpasserror:false,confirmpasshelper:''}))
         }
         
+        if(forRegix.fnamerror === false && forRegix.lnamerror === false && forRegix.usernamerror === false && forRegix.passworderror === false && forRegix.confirpasserror === false){
+            SignUpApi(enterDetail)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        }
     }
     return(
         <>
-
+        <div className="bodysignup">
         <div className="creatmainpage">
             <div className="formcreate">
                 <div class="img3">
@@ -180,6 +190,7 @@ function Signup(){
             </div>
         </div>
     {/* </div> */}
+    </div>
         </>
     )
 }

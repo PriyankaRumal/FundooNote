@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './signin.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { SignInApi } from '../../services/userservice';
 
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
@@ -43,9 +44,20 @@ function SignIn() {
         else if(passTest===true){
             setuserRegix(preState =>({...preState,passMsg:false,passHelper:''}))
         }
+        if (emailTest === true && passTest === true) {
+            SignInApi(userDetails)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
     }
+
     return (
         <>
+        <div className="bodysignin">
             <form className="FormBody">
                 <div className="fundologo">
                 <div className="f">F</div>
@@ -101,6 +113,7 @@ function SignIn() {
                 <div className="footercontent">
                     Help  &nbsp;  &nbsp;  &nbsp; Privacy &nbsp; &nbsp; &nbsp; Terms
                 </div>
+            </div>
             </div>
         </>
     )
