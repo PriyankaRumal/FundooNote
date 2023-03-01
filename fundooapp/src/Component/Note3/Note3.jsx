@@ -13,11 +13,15 @@ import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 
 
-function Note3() {
+function Note3(props) {
     return (
         <div className="note3container">
             <div className="text">
-                <div className="entertxt"><InputBase placeholder="Take a Note..." /></div>
+                <div className="entertxt1">
+                <span className='entertxt'>{props.note.title}</span>
+            <span className='entertxt'>{props.note.description}</span>
+                </div>
+                {/* <div className="entertxt"><InputBase placeholder="Take a Note..." /></div> */}
                 <div className="pin2">
                     <Button><PushPinOutlinedIcon style={{ color: 'black' }} fontSize="small" /></Button>
                 </div>

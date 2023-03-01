@@ -1,0 +1,10 @@
+.toggleBetween{
+    margin: 2vw 1vw 1vw 38vw;
+}
+.previousnote{
+    width: 70vw;
+    float: right;
+    margin-right: 7vw;
+    margin-top: 2vw;
+    gap:1.5vw;
+}

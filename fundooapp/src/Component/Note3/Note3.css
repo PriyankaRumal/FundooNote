@@ -18,9 +18,21 @@
     margin-top: 10px;
     margin-left: 5px;
 }
-.entertxt{
+.entertxt1{
     width: 80%;
-    height: 100%;
+    /* border: blue solid; */
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.entertxt{
+    display: flex;
+    flex-direction: column;
+    height: 15vh;
+    text-align: start;
+    width: 80%;
+    /* height: 100%; */
     /* border:  red solid; */
 }
 .pin2{

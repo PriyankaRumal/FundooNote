@@ -15,6 +15,7 @@ function App() {
       {/* <SignIn /> */}
       {/* <Signup /> */}
       {/* <Dashboard /> */}
+      {/* <Note3 /> */}
       <Router1/>
     </div>
   );

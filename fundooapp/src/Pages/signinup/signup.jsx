@@ -3,12 +3,14 @@ import './signup.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { SignUpApi } from '../../services/userservice';
+import { useNavigate } from 'react-router-dom';
 
 const nameRegex = /^([A-Z]{1}[a-z,A-Z]{2,})$/;
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 function Signup(){
 
+    let navigate1=useNavigate()
     const [enterDetail, setEnterDetail] = useState({
         firstname:'',
         lastname:'',
@@ -98,6 +100,7 @@ function Signup(){
             SignUpApi(enterDetail)
             .then(response => {
                 console.log(response)
+                navigate1('/')
             })
             .catch(error => {
                 console.log(error)
@@ -177,7 +180,7 @@ function Signup(){
                     className="box" id="check"/><label for="check">show password</label>
                 </div>
                 <div className="signinInstead">
-                    <button className="instead" >Sign in instead</button>
+                    <Button className="instead" onClick={()=>navigate1('/')} >Sign in instead</Button>
                  <Button className="next"
                   onClick={showDetails} variant="contained">Next</Button>
                 </div>
