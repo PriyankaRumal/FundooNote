@@ -11,3 +11,7 @@ export const GetAllNoteApi=()=>{
     const response=axios.get(`${BaseUrl}/RetriveAll`,headerConfig)
     return response
 }
+export const ArchiveOrNotApi=(noteId)=>{
+    const response=axios.put(`${BaseUrl}/ArchieveNote?noteId=${noteId}`,noteId,headerConfig)
+    return response
+}

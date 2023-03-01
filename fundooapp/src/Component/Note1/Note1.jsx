@@ -17,7 +17,8 @@ function Note1(props){
   
     const [createnote,setCreateNote]=useState({
         title:'',
-        description:''
+        description:'',
+        archiveNote:''
     })
     const takeTitle=(event)=>{
         console.log(event.target.value)
@@ -25,6 +26,11 @@ function Note1(props){
     }
     const takeDescreption=(event)=>{
         setCreateNote(prevstate=>({...prevstate,description:event.target.value}))
+    }
+    const noteArchive=(event)=>{
+        setCreateNote(prevstate=>({...prevstate,archiveNote:true}))
+        console.log('Archive Successful')
+
     }
     const closenote=()=>{
         props.closetaknote1()
@@ -57,7 +63,8 @@ function Note1(props){
             <Button> <PersonAddAltOutlinedIcon style={{ color: "202124" }} fontSize="small" /> </Button>
             <Button> <ColorLensOutlinedIcon style={{ color: "202124" }} fontSize="small"/> </Button>
             <Button> <AddPhotoAlternateOutlinedIcon  style={{ color: "202124" }} fontSize="small" /> </Button>
-            <Button> <ArchiveOutlinedIcon  style={{ color: "202124" }} fontSize="small"/> </Button>
+            <Button> <ArchiveOutlinedIcon 
+             onClick={noteArchive} style={{ color: "202124" }} fontSize="small"/> </Button>
             <Button> <MoreVertOutlinedIcon style={{ color: "202124" }} fontSize="small" /> </Button>
             <Button> <UndoOutlinedIcon  style={{ color: "202124" }} fontSize="small"/> </Button>
             <Button> <RedoOutlinedIcon  style={{ color: "202124" }} fontSize="small"/> </Button>

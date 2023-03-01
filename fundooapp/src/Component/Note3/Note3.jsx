@@ -11,9 +11,16 @@ import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
+import { ArchiveOrNotApi } from "../../services/dataservice";
 
 
 function Note3(props) {
+    const NoteArchive=(id)=>{
+        ArchiveOrNotApi(id)
+        .then((response)=>console.log(response))
+        .catch((error)=>console.log(error))
+        console.log('Archive Successful')
+    }
     return (
         <div className="note3container">
             <div className="text">
@@ -31,7 +38,9 @@ function Note3(props) {
                 <div className="icn"><Button> <PersonAddAltOutlinedIcon className="iconofNote3" style={{ color: "202124", marginLeft: '-10px' }} fontSize="small" /> </Button></div>
                 <div className="icn"><Button> <ColorLensOutlinedIcon className="iconofNote3" style={{ color: "202124" }} fontSize="small" /> </Button></div>
                 <div className="icn"><Button> <AddPhotoAlternateOutlinedIcon className="iconofNote3" style={{ color: "202124" }} fontSize="small"/> </Button></div>
-                <div className="icn"><Button> <ArchiveOutlinedIcon className="iconofNote3" style={{ color: "202124" }} fontSize="small" /> </Button></div>
+                <div className="icn"><Button> <ArchiveOutlinedIcon 
+                onClick={ ()=> NoteArchive(props.note.noteId)}
+                className="iconofNote3" style={{ color: "202124" }} fontSize="small" /> </Button></div>
                 <div className="icn"> <Button> <MoreVertOutlinedIcon className="iconofNote3" style={{ color: "202124" }} fontSize="small" /> </Button></div>
                 {/* <div className="icn"><Button> <UndoOutlinedIcon className="iconofNote3" style={{ color: "202124" }} fontSize="20px" /> </Button></div>
                 <div className="icn"><Button> <RedoOutlinedIcon className="iconofNote3" style={{ color: "202124" }} fontSize="20px" /> </Button></div> */}
