@@ -4,6 +4,7 @@ const headerConfig={
 }
 const BaseUrl="https://localhost:44335/api/Note"
 export const CreateNoteApi=(data)=>{
+    console.log(data)
     const response=axios.post(`${BaseUrl}/CreateNote `,data,headerConfig)
     return response
 }
@@ -13,5 +14,9 @@ export const GetAllNoteApi=()=>{
 }
 export const ArchiveOrNotApi=(noteId)=>{
     const response=axios.put(`${BaseUrl}/ArchieveNote?noteId=${noteId}`,noteId,headerConfig)
+    return response
+}
+export const ColorApi=(data)=>{
+    const response=axios.put(`${BaseUrl}/ColorNote`,data,headerConfig)
     return response
 }

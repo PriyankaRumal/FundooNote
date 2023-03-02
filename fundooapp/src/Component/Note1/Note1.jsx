@@ -12,13 +12,15 @@ import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import { CreateNoteApi } from "../../services/dataservice";
+import Colorpopper from "../ColorPopper/Colorpopper";
 
 function Note1(props){
   
     const [createnote,setCreateNote]=useState({
         title:'',
         description:'',
-        archiveNote:''
+        archiveNote:false,
+        color:''
     })
     const takeTitle=(event)=>{
         console.log(event.target.value)
@@ -32,6 +34,10 @@ function Note1(props){
         console.log('Archive Successful')
 
     }
+    const openColorPopper =(colour) => {
+        setCreateNote(prevState => ({...prevState,color:colour}))
+    }
+
     const closenote=()=>{
         props.closetaknote1()
         if(createnote.title || createnote.description)
@@ -40,6 +46,7 @@ function Note1(props){
         CreateNoteApi(createnote)
         .then(response => {
             console.log(response)
+            props.autoRefresh()
         })
         .catch(error => {
             console.log(error)
@@ -47,7 +54,7 @@ function Note1(props){
        }
     }
     return(
-        <div className="mainContainer">
+        <div className="mainContainer" style={{backgroundColor:createnote.color}}>
             <div className='input1'>
                 <div className="title1"><InputBase placeholder="Title" 
                 onChange={takeTitle}
@@ -61,7 +68,7 @@ function Note1(props){
             <div className="icons1">
             <Button> <AddAlertOutlinedIcon style={{ color: '#202124' }} fontSize="small"/> </Button>
             <Button> <PersonAddAltOutlinedIcon style={{ color: "202124" }} fontSize="small" /> </Button>
-            <Button> <ColorLensOutlinedIcon style={{ color: "202124" }} fontSize="small"/> </Button>
+            <Button> <Colorpopper openColorPopper={openColorPopper} action="create"/> </Button>
             <Button> <AddPhotoAlternateOutlinedIcon  style={{ color: "202124" }} fontSize="small" /> </Button>
             <Button> <ArchiveOutlinedIcon 
              onClick={noteArchive} style={{ color: "202124" }} fontSize="small"/> </Button>

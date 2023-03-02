@@ -8,6 +8,7 @@ import Note2 from './Component/Note2/Note2';
 import Note3 from './Component/Note3/Note3';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Router1 from './Router/Router';
+import Colorpopper from './Component/ColorPopper/Colorpopper';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       {/* <Dashboard /> */}
       {/* <Note3 /> */}
       <Router1/>
+      {/* <Colorpopper /> */}
     </div>
   );
 }
