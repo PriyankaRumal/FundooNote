@@ -4,7 +4,7 @@ import '../Note1/Note1.css';
 import InputBase from '@mui/material/InputBase';
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
+// import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';

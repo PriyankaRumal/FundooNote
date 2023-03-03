@@ -20,3 +20,7 @@ export const ColorApi=(data)=>{
     const response=axios.put(`${BaseUrl}/ColorNote`,data,headerConfig)
     return response
 }
+export const UpdateNoteApi=(id,data)=>{
+    const response=axios.put(`${BaseUrl}/UpdateApi?noteId=${id}`,data,headerConfig)
+    return response
+}
