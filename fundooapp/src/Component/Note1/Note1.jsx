@@ -5,7 +5,7 @@ import InputBase from '@mui/material/InputBase';
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 // import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+// import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
@@ -13,6 +13,8 @@ import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import { CreateNoteApi } from "../../services/dataservice";
 import Colorpopper from "../ColorPopper/Colorpopper";
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+
 
 function Note1(props){
   
@@ -20,7 +22,9 @@ function Note1(props){
         title:'',
         description:'',
         archiveNote:false,
-        color:''
+        color:'',
+        trash:false,
+        pinNote:false
     })
     const takeTitle=(event)=>{
         console.log(event.target.value)
@@ -33,6 +37,14 @@ function Note1(props){
         setCreateNote(prevstate=>({...prevstate,archiveNote:true}))
         console.log('Archive Successful')
 
+    }
+    const moveToTrash=(event)=>{
+        setCreateNote(prevstate=>({...prevstate,trash:true}))
+        console.log('moved to trash')
+    }
+    const notePin=(event)=>{
+        setCreateNote(prevstate=>({...prevstate,pinNote:true}))
+        console.log('note pinned')
     }
     const openColorPopper =(colour) => {
         setCreateNote(prevState => ({...prevState,color:colour}))
@@ -59,7 +71,8 @@ function Note1(props){
                 <div className="title1"><InputBase placeholder="Title" 
                 onChange={takeTitle}
                 style={{ color: '#202124' }}/></div>
-                <div className="pin"><Button>< PushPinOutlinedIcon  style={{ color: 'black' }} fontSize="small"/></Button></div>
+                <div className="pin"><Button>< PushPinOutlinedIcon 
+                onClick={notePin} style={{ color: 'black' }} fontSize="small"/></Button></div>
             </div>
             <div className='input2'><InputBase 
             onChange={takeDescreption}
@@ -69,7 +82,9 @@ function Note1(props){
             <Button> <AddAlertOutlinedIcon style={{ color: '#202124' }} fontSize="small"/> </Button>
             <Button> <PersonAddAltOutlinedIcon style={{ color: "202124" }} fontSize="small" /> </Button>
             <Button> <Colorpopper openColorPopper={openColorPopper} action="create"/> </Button>
-            <Button> <AddPhotoAlternateOutlinedIcon  style={{ color: "202124" }} fontSize="small" /> </Button>
+            <Button> <DeleteOutlinedIcon 
+             onClick={moveToTrash}
+            style={{ color: "202124" }} fontSize="small" /> </Button>
             <Button> <ArchiveOutlinedIcon 
              onClick={noteArchive} style={{ color: "202124" }} fontSize="small"/> </Button>
             <Button> <MoreVertOutlinedIcon style={{ color: "202124" }} fontSize="small" /> </Button>

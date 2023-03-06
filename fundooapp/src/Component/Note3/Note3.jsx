@@ -15,8 +15,11 @@ import { ArchiveOrNotApi, ColorApi } from "../../services/dataservice";
 import Colorpopper from "../ColorPopper/Colorpopper";
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 // import Typography from '@mui/material/Typography';
 import { UpdateNoteApi } from "../../services/dataservice";
+import { TrashNoteApi } from "../../services/dataservice";
+import { PinnedNoteApi } from "../../services/dataservice";
 
 const style = {
     position: 'absolute',
@@ -65,6 +68,19 @@ function Note3(props) {
         console.log('Archive Successful')
 
     }
+    const PinnedNote=(id)=>{
+        PinnedNoteApi(id)
+        .then((response) => console.log(response))
+            .catch((error) => console.log(error))
+        console.log('pinned successful')
+    }
+
+    const TrashNote=(id)=>{
+        TrashNoteApi(id)
+        .then((response) => console.log(response))
+            .catch((error) => console.log(error))
+        console.log('moved to trash!')
+    }
     const listenToColorPopper2 = (color1) => {
 
         let nId = {
@@ -105,14 +121,18 @@ function Note3(props) {
                     </div>
                     {/* <div className="entertxt"><InputBase placeholder="Take a Note..." /></div> */}
                     <div className="pin2">
-                        <Button><PushPinOutlinedIcon style={{ color: 'black' }} fontSize="small" /></Button>
+                        <Button><PushPinOutlinedIcon 
+                        onClick={()=>PinnedNote(props.note.noteId)}
+                        style={{ color: 'black' }} fontSize="small" /></Button>
                     </div>
                 </div>
                 <div className="iconsNote3">
                     <div className="icn"><Button> <AddAlertOutlinedIcon className="iconofNote3" style={{ color: '#202124', marginLeft: '-10px' }} fontSize="small" /> </Button></div>
                     <div className="icn"><Button> <PersonAddAltOutlinedIcon className="iconofNote3" style={{ color: "202124", marginLeft: '-10px' }} fontSize="small" /> </Button></div>
                     <div className="icn"><Button> <Colorpopper className="iconofNote3" listenToColorPopper2={listenToColorPopper2} action="update"></Colorpopper> </Button></div>
-                    <div className="icn"><Button> <AddPhotoAlternateOutlinedIcon className="iconofNote3" style={{ color: "202124" }} fontSize="small" /> </Button></div>
+                    <div className="icn"><Button> <DeleteOutlinedIcon 
+                    onClick={()=>TrashNote(props.note.noteId)}
+                    className="iconofNote3" style={{ color: "202124" }} fontSize="small" /> </Button></div>
                     <div className="icn"><Button> <ArchiveOutlinedIcon
                         onClick={() => NoteArchive(props.note.noteId)}
                         className="iconofNote3" style={{ color: "202124" }} fontSize="small" /> </Button></div>

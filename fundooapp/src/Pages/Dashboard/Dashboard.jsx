@@ -6,12 +6,19 @@ import Note3 from "../../Component/Note3/Note3";
 import { GetAllNoteApi } from "../../services/dataservice";
 import { useEffect } from "react";
 import '../Dashboard/Dashboard.css'
+import Drawwer from "../../Component/Drawer/Drawwer";
 
 
 function Dashboard() {
 
     const [toggle, setToggle] = useState(false)
     const [dataArray, setDataArray] = useState([])
+    const [drawerstate,setDrawerState]=useState(false)
+
+    const listentoHeader=()=>{
+        setDrawerState(!drawerstate)
+        console.log(drawerstate)
+    }
 
     const listentotake1 = () => {
         setToggle(true)
@@ -38,7 +45,8 @@ function Dashboard() {
     }, [])
     return (
         <div>
-            <Header />
+            <Header listentoHeader={listentoHeader} />
+            <Drawwer drawerstate={drawerstate}/>
             <div className="toggleBetween">
                 {
                     toggle ? <Note1 closetaknote1={closetaknote1} autoRefresh={autoRefresh}/> : <Note2 listentotake1={listentotake1} />

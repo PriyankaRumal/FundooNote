@@ -24,3 +24,11 @@ export const UpdateNoteApi=(id,data)=>{
     const response=axios.put(`${BaseUrl}/UpdateApi?noteId=${id}`,data,headerConfig)
     return response
 }
+export const TrashNoteApi=(noteId)=>{
+    const response=axios.put(`${BaseUrl}/TrashApi?noteId=${noteId}`,noteId,headerConfig)
+    return response
+}
+export const PinnedNoteApi=(noteId)=>{
+    const response=axios.put(`${BaseUrl}/Pin?noteId=${noteId}`,noteId,headerConfig)
+    return response
+}

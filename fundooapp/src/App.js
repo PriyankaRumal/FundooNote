@@ -9,6 +9,7 @@ import Note3 from './Component/Note3/Note3';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Router1 from './Router/Router';
 import Colorpopper from './Component/ColorPopper/Colorpopper';
+import Drawwer from './Component/Drawer/Drawwer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       {/* <Dashboard /> */}
       {/* <Note3 /> */}
       <Router1/>
+      {/* <Drawwer /> */}
       {/* <Colorpopper /> */}
     </div>
   );
