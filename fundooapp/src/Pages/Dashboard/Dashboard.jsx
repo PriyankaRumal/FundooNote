@@ -14,6 +14,7 @@ function Dashboard() {
     const [toggle, setToggle] = useState(false)
     const [dataArray, setDataArray] = useState([])
     const [drawerstate,setDrawerState]=useState(false)
+    const [noteNavBarValue, setNeNavBarValue] = useState("Notes")
 
     const listentoHeader=()=>{
         setDrawerState(!drawerstate)
@@ -30,7 +31,33 @@ function Dashboard() {
         GetAllNoteApi()
         .then(response => {
             console.log(response)
-            setDataArray(response.data.data)
+           // setDataArray(response.data.data)
+           let noteArray = [];
+           if (noteNavBarValue === "Notes") {
+               noteArray = response.data.data.filter((note) =>{
+                if(note.archiveNote===false && note.trash===false)
+                {
+                    return note
+                }
+            })
+           }
+           else if(noteNavBarValue === "Archive"){
+            noteArray = response.data.data.filter((note) =>{
+                if(note.archiveNote===true && note.trash===false)
+                {
+                    return note
+                }
+            })
+           }
+           else if(noteNavBarValue === "Trash"){
+            noteArray = response.data.data.filter((note) =>{
+                if(note.archiveNote===false && note.trash===true)
+                {
+                    return note
+                }
+            })
+           }
+           setDataArray(noteArray)
         })
         .catch(error => {
             console.log(error)
@@ -42,11 +69,16 @@ function Dashboard() {
     }
     useEffect(() => {
         getAllNote()
-    }, [])
+    }, [noteNavBarValue])
+
+    const SelectText1=(label)=>{
+        console.log(label)
+        setNeNavBarValue(label)
+    }
     return (
         <div>
             <Header listentoHeader={listentoHeader} />
-            <Drawwer drawerstate={drawerstate}/>
+            <Drawwer drawerstate={drawerstate} SelectText1={SelectText1}/>
             <div className="toggleBetween">
                 {
                     toggle ? <Note1 closetaknote1={closetaknote1} autoRefresh={autoRefresh}/> : <Note2 listentotake1={listentotake1} />

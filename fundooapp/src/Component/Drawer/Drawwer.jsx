@@ -105,6 +105,10 @@ export default function Drawwer(props) {
     const handleDrawerClose = () => {
       setOpen(false);
     };
+
+    const SelectText=(label)=>{
+     props.SelectText1(label)
+    }
   
     return (
       <Box sx={{ display: 'flex' }}> 
@@ -133,7 +137,7 @@ export default function Drawwer(props) {
           <Divider /> */}
           <List>
             {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => ( */}
-              <ListItem  disablePadding sx={{ display: 'block' }}>
+              <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>SelectText("Notes")}>
                 <ListItemButton>
                   <ListItemIcon>
                     <LightbulbOutlinedIcon />
@@ -141,7 +145,7 @@ export default function Drawwer(props) {
                   <ListItemText primary = "Notes" />
                 </ListItemButton>
               </ListItem>
-              <ListItem  disablePadding sx={{ display: 'block' }}>
+              <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>SelectText("Reminders")}>
                 <ListItemButton>
                   <ListItemIcon>
                   <AddAlertOutlinedIcon />
@@ -149,7 +153,7 @@ export default function Drawwer(props) {
                   <ListItemText primary = "Reminders" />
                 </ListItemButton>
               </ListItem>
-              <ListItem  disablePadding sx={{ display: 'block' }}>
+              <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>SelectText("Edit")}>
                 <ListItemButton>
                   <ListItemIcon>
                   <LabelOutlinedIcon />
@@ -157,7 +161,7 @@ export default function Drawwer(props) {
                   <ListItemText primary = "Edit Labels" />
                 </ListItemButton>
               </ListItem>
-              <ListItem  disablePadding sx={{ display: 'block' }}>
+              <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>SelectText("Archive")}>
                 <ListItemButton>
                   <ListItemIcon>
                   <ArchiveOutlinedIcon />
@@ -165,7 +169,7 @@ export default function Drawwer(props) {
                   <ListItemText primary = "Archive" />
                 </ListItemButton>
               </ListItem>
-              <ListItem  disablePadding sx={{ display: 'block' }}>
+              <ListItem  disablePadding sx={{ display: 'block' }} onClick={()=>SelectText("Trash")}>
                 <ListItemButton>
                   <ListItemIcon>
                   <DeleteOutlinedIcon />

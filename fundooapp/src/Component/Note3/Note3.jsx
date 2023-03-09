@@ -63,7 +63,10 @@ function Note3(props) {
 
     const NoteArchive = (id) => {
         ArchiveOrNotApi(id)
-            .then((response) => console.log(response))
+            .then(response => {
+                console.log(response)
+                props.autoRefresh()
+            })
             .catch((error) => console.log(error))
         console.log('Archive Successful')
 
@@ -77,7 +80,10 @@ function Note3(props) {
 
     const TrashNote=(id)=>{
         TrashNoteApi(id)
-        .then((response) => console.log(response))
+        .then(response =>{
+         console.log(response)
+         props.autoRefresh()
+        })
             .catch((error) => console.log(error))
         console.log('moved to trash!')
     }
