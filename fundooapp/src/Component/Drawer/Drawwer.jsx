@@ -23,6 +23,7 @@ import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
 import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import {connect} from 'react-redux'
 
 
 const drawerWidth = 240;
@@ -94,7 +95,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Drawwer(props) {
+ function Drawwer(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
   
@@ -108,6 +109,8 @@ export default function Drawwer(props) {
 
     const SelectText=(label)=>{
      props.SelectText1(label)
+    // props.dispatch({type:`${label}`})
+      props.dispatch({type:`${label}`})
     }
   
     return (
@@ -185,3 +188,4 @@ export default function Drawwer(props) {
       </Box>
     );
   }
+  export default connect()(Drawwer)
