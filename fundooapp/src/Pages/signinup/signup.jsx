@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { SignUpApi } from '../../services/userservice';
 import { useNavigate } from 'react-router-dom';
+import { fontSize } from '@mui/system';
 
 const nameRegex = /^([A-Z]{1}[a-z,A-Z]{2,})$/;
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
@@ -129,7 +130,7 @@ function Signup(){
                          onChange={takename}
                          error={forRegix.fnamerror}
                          helperText={forRegix.fnamehelper}
-                        id="outlined-basic" className="fname"  label="First name" variant="outlined" fullWidth size='small'/>
+                        id="outlined-basic" className='fname' sx={{marginTop:1}} label="First name" variant="outlined" fullWidth size='small'/>
                     </div>
                     <div className="lastname">
                         {/* <input type="text" className="lname" id="Lname" placeholder="Last name"/> */}
@@ -137,7 +138,7 @@ function Signup(){
                         onChange={takelastname}
                         error={forRegix.lnamerror}
                         helperText={forRegix.lnamehelper}
-                        id="outlined-basic" className="lname" sx={{marginLeft:1}}  label="Last name" variant="outlined" fullWidth size='small'/>
+                        id="outlined-basic" className="lname" sx={{marginTop:1}}  label="Last name" variant="outlined" fullWidth size='small'/>
                     </div>
                 </div>
                 <div className="username">
@@ -146,7 +147,7 @@ function Signup(){
                     onChange={takeusername}
                     error={forRegix.usernamerror}
                     helperText={forRegix.usernamehelper}
-                    id="outlined-basic" className="uname" label="Username" variant="outlined" fullWidth="true"  size='small'/>
+                    id="outlined-basic" className="uname" label="Username" variant="outlined" fullWidth size='small'/>
 
                     <p className="instruction">You can use letters,numbers and fullstops</p>
                 </div>
@@ -169,7 +170,7 @@ function Signup(){
                         onChange={takeconfirm}
                         error={forRegix.confirpasserror}
                         helperText={forRegix.confirmpasshelper}
-                        id="outlined-basic" className="uname" sx={{marginLeft:1}} label="Confirm" variant="outlined" fullWidth size='small'/>
+                        id="outlined-basic" className="uname"  label="Confirm" fullWidth variant="outlined"  size='small'/>
 
                     </div>
                     {/* <div className="use8"><p>Use 8 or more characters with a mix of letters, numbers & symbols</p></div> */}
@@ -180,7 +181,7 @@ function Signup(){
                     className="box" id="check"/><label for="check">show password</label>
                 </div>
                 <div className="signinInstead">
-                    <Button className="instead" onClick={()=>navigate1('/')} >Sign in instead</Button>
+                    <Button className="instead" sx={{fontSize:10}} onClick={()=>navigate1('/')} >Sign in instead</Button>
                  <Button className="next"
                   onClick={showDetails} variant="contained">Next</Button>
                 </div>

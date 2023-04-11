@@ -70,13 +70,13 @@
     justify-content: space-evenly;
     align-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     margin-top: 36px;
 }
 .InputEmail{
-    width: 350px;
+    width:85%;
     height: 50px;
-    border: 1px solid #d3d3d3;
+    /* border: 1px solid #d3d3d3; */
     padding-left: 10px;
     border-radius: 5px;
     /* border: solid blue; */
@@ -86,9 +86,9 @@
     justify-content: space-evenly;
 }
 .InputPassword{
-    width: 350px;
+    width: 85%;
     height: 50px;
-    border: 1px solid #d3d3d3;
+    /* border: 1px solid #d3d3d3; */
     border-radius: 5px;
     /* border: solid green; */
     font-size: 16px;
@@ -96,12 +96,12 @@
     margin-top: 30px;
 }
 .forgot{
-    width: 90%;
+    width: 80%;
     height: 5%;
     /* border: solid black; */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-self: center;
     margin-top: 15px;
 
@@ -205,4 +205,10 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+}
+
+@media screen and (min-width:320px) and (max-width:600px) {
+    .InputEmail,.InputPassword{
+        width: 80%;
+    }
 }

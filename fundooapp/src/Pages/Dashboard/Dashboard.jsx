@@ -16,6 +16,12 @@ function Dashboard() {
     const [drawerstate,setDrawerState]=useState(false)
     const [noteNavBarValue, setNeNavBarValue] = useState("Notes")
 
+    const listentoSearch=(val)=>{
+            setNeNavBarValue(val)
+            console.log("title from dashboard")
+            console.log(noteNavBarValue)
+    }
+
     const listentoHeader=()=>{
         setDrawerState(!drawerstate)
         console.log(drawerstate)
@@ -57,6 +63,14 @@ function Dashboard() {
                 }
             })
            }
+           else {
+             noteArray = response.data.data.filter((note) =>{
+                if(note.title === noteNavBarValue)
+                {
+                    return note
+                }
+            })
+           }
            setDataArray(noteArray)
         })
         .catch(error => {
@@ -77,7 +91,7 @@ function Dashboard() {
     }
     return (
         <div>
-            <Header listentoHeader={listentoHeader} />
+            <Header listentoHeader={listentoHeader}  listentoSearch={listentoSearch}/>
             <Drawwer drawerstate={drawerstate} SelectText1={SelectText1}/>
             <div className="toggleBetween">
                 {

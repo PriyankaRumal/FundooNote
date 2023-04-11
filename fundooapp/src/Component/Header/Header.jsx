@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import '../Header/Header.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,6 +11,9 @@ import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {connect} from 'react-redux'
 function Header(props) {
+  const Searchval=(e)=>{
+     props.listentoSearch(e.target.value)
+  }
    const listentomenu=()=>{
     props.listentoHeader()
    }
@@ -25,7 +28,7 @@ function Header(props) {
       </div>
       <div className="Searchbar">
       <div className='icon'><Button> <SearchIcon style={{ color: '#5f6368' }} /> </Button></div>
-            <div className='input'><InputBase placeholder="Search" /></div>
+            <div className='input'><InputBase onChange={Searchval} placeholder="Search" /></div>
       </div>
       <div className="icons2">
             <Button> <RefreshIcon style={{ color: '#202124' }} fontSize="small"/> </Button>

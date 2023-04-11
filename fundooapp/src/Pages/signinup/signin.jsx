@@ -76,21 +76,21 @@ function SignIn() {
                     Use your Google Account
                 </div>
                 <div className="InputBox">
-                    <div >
+                    <div className="InputEmail">
                         {/* <input className="InputEmail" placeholder="Email or phone" /> */}
                         <TextField
                             onChange={takeEmail}
                             error={userRegix.emailMsg}
                             helperText={userRegix.emailHelper}
-                            id="outlined-basic" className="InputEmail" label="Email or Phone" variant="outlined" />
+                            id="outlined-basic"  label="Email or Phone" fullWidth variant="outlined" />
                     </div>
-                    <div >
+                    <div className="InputPassword">
                         {/* <input className="InputPassword" placeholder="Password" /> */}
                         <TextField
                             onChange={takePass}
                             error={userRegix.passMsg}
                             helperText={userRegix.passHelper}
-                            id="outlined-basic2" className="InputPassword" label="Password" variant="outlined" />
+                            id="outlined-basic2"  label="Password" fullWidth variant="outlined" />
                     </div>
                 </div>
                 <div className="forgot">
